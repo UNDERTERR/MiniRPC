@@ -14,7 +14,7 @@ public final class PropertiesFileUtil {
     private PropertiesFileUtil() {}
     public static Properties readPropertiesFile(String fileName) {
         //获取类路径下某个资源文件的 URL，传入空字符串表示获取 类路径的根目录。
-        URL url = PropertiesFileUtil.class.getClassLoader().getResource("");
+        URL url = Thread.currentThread().getContextClassLoader().getResource("");
         String rpcConfigPath = "";
         if (url != null) {
             rpcConfigPath = url.getPath()+fileName;
