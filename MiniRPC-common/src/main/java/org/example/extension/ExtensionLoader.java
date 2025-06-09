@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * TODO:
+ *
  * “扩展”是指：某个接口（称为扩展点）可以有多个实现，用户根据需要选择或定制使用哪一个实现。
  *
  * @param <T>
@@ -79,6 +79,7 @@ public final class ExtensionLoader<T> {
 
     ///////////////////////////////////////////////////////////////////////之后是工具方法
     private void loadResource(Map<String, Class<?>> extensionClasses, ClassLoader classLoader, URL resourceUrl) {
+        //把一个 URL 指向的资源打开为输入流 → 把字节流转成字符流 → 用 BufferedReader 包装它，支持按行读取。
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceUrl.openStream()))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -113,7 +114,7 @@ public final class ExtensionLoader<T> {
         try {
             Enumeration<URL> urls;
             ClassLoader classLoader = ExtensionLoader.class.getClassLoader();
-            urls = classLoader.getResources(fileName);
+            urls = classLoader.getResources(fileName);//从类路径（classpath）中获取所有名字为 fileName 的资源文件，并返回一个 Enumeration<URL>，即所有符合条件的资源文件的位置。
             if (urls != null) {
                 while (urls.hasMoreElements()) {
                     URL resourceUrl = urls.nextElement();

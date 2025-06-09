@@ -1,0 +1,1 @@
+loadBalance=org.example.loadbalance.loadbalancer.ConsistentHashLoadBalance

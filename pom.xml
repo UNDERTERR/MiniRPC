@@ -11,6 +11,7 @@
     <modules>
         <module>MiniRPC-api</module>
         <module>MiniRPC-common</module>
+        <module>MiniRPC-simple</module>
     </modules>
 
     <properties>
