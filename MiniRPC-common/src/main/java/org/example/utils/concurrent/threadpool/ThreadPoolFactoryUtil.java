@@ -72,6 +72,7 @@ public final class ThreadPoolFactoryUtil {
         });
     }
     /*
+    TODO：
     AI改进版：
         THREAD_POOLS.forEach((name, executorService) -> {
     executorService.shutdown();
