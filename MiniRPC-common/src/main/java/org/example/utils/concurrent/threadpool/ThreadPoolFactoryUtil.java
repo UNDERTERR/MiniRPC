@@ -59,6 +59,7 @@ public final class ThreadPoolFactoryUtil {
      */
     public static void shutDownAllThreadPool() {
         log.info("call shutDownAllThreadPool method");
+        //entry相当于c++中pair
         THREAD_POOLS.entrySet().parallelStream().forEach(entry -> {
             ExecutorService executorService = entry.getValue();
             executorService.shutdown();
@@ -73,7 +74,7 @@ public final class ThreadPoolFactoryUtil {
     }
     /*
     TODO：
-    AI改进版：
+    改进版：
         THREAD_POOLS.forEach((name, executorService) -> {
     executorService.shutdown();
     try {
@@ -88,7 +89,7 @@ public final class ThreadPoolFactoryUtil {
         executorService.shutdownNow();
         Thread.currentThread().interrupt(); // 恢复中断状态
     }
-});
+    });
      */
     /**
      * 打印线程池的状态
