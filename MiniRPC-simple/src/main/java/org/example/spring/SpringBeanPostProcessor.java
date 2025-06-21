@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * call this method before creating the bean to see if the class is annotated
+ * TODO
  */
 @Slf4j
 @Component

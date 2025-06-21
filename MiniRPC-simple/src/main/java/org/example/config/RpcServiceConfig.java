@@ -22,7 +22,7 @@ public class RpcServiceConfig {
     private String group="";
 
     public String getRpcServiceName() {
-        return this.getServiceName()+this.getVersion()+this.getGroup();
+        return this.getServiceName()+this.getGroup()+this.getVersion();
     }
     public String getServiceName() {
         return service.getClass().getInterfaces()[0].getCanonicalName();
