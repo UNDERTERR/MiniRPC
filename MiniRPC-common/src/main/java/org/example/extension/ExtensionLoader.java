@@ -37,6 +37,7 @@ public final class ExtensionLoader<T> {
         this.type = type;
     }
 
+    //全局核心:SPI机制
     public static <T> ExtensionLoader<T> getExtensionLoader(Class<T> type) {
         if (type == null) {
             throw new IllegalArgumentException("type is null");

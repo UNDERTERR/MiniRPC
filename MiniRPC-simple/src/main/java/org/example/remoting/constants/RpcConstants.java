@@ -16,6 +16,9 @@ public class RpcConstants {
     public static final byte REQUEST_TYPE = 1;
     public static final byte RESPONSE_TYPE = 2;
     //ping
+    /**
+     * 心跳是一种检测链接有没有中断的机制，参考游戏中的ping
+     */
     public static final byte HEARTBEAT_REQUEST_TYPE = 3;
     //pong
     public static final byte HEARTBEAT_RESPONSE_TYPE = 4;
