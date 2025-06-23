@@ -1,7 +1,6 @@
 package org.example.loadbalance.loadbalancer;
 
 import org.example.loadbalance.AbstractLoadBalance;
-import org.example.loadbalance.LoadBalance;
 import org.example.remoting.dto.RpcRequest;
 
 import java.util.List;

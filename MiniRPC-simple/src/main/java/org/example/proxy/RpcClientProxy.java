@@ -8,6 +8,7 @@ import org.example.exception.RpcException;
 import org.example.remoting.dto.RpcRequest;
 import org.example.remoting.dto.RpcResponse;
 import org.example.remoting.transport.RpcRequestTransport;
+import org.example.remoting.transport.netty.client.NettyRpcClient;
 import org.example.remoting.transport.socket.SocketRpcClient;
 
 import java.lang.reflect.InvocationHandler;
@@ -61,6 +62,12 @@ public class RpcClientProxy implements InvocationHandler {
         return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class<?>[]{clazz}, this);
     }
     @Override
+    /*
+    客户端创建 rpcRequest；
+    调用 sendRpcRequest() 发出网络请求（Netty）；
+    方法返回一个 CompletableFuture，代表“结果还没来”；✅ 这是异步模型；
+    调用 .get() 让出 CPU，等待远程结果返回；⛔ 这里转成了同步阻塞。
+     */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         log.info("invoked method: [{}]", method.getName());
         RpcRequest rpcRequest = RpcRequest.builder().methodName(method.getName())
@@ -75,6 +82,7 @@ public class RpcClientProxy implements InvocationHandler {
         if (rpcRequestTransport instanceof NettyRpcClient) {
             //它返回的是一个 CompletableFuture 对象，表示“将来会返回一个 RpcResponse<Object> 结果”。
             CompletableFuture<RpcResponse<Object>> completableFuture = (CompletableFuture<RpcResponse<Object>>) rpcRequestTransport.sendRpcRequest(rpcRequest);
+            //CompletableFuture.get() 是一个阻塞方法，会等到服务器响应后才继续执行。
             rpcResponse = completableFuture.get();
         }
         if (rpcRequestTransport instanceof SocketRpcClient) {

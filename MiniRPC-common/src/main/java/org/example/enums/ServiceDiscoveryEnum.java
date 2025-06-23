@@ -2,7 +2,6 @@ package org.example.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.checkerframework.checker.units.qual.A;
 
 @AllArgsConstructor
 @Getter

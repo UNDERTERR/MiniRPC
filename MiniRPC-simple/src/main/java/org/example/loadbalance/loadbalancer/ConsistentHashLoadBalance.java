@@ -2,7 +2,6 @@ package org.example.loadbalance.loadbalancer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.loadbalance.AbstractLoadBalance;
-import org.example.loadbalance.LoadBalance;
 import org.example.remoting.dto.RpcRequest;
 
 import java.nio.charset.StandardCharsets;

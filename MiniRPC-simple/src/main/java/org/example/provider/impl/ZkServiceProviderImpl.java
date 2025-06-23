@@ -8,6 +8,7 @@ import org.example.exception.RpcException;
 import org.example.extension.ExtensionLoader;
 import org.example.provider.ServiceProvider;
 import org.example.registry.ServiceRegistry;
+import org.example.remoting.transport.netty.server.NettyRpcServer;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;

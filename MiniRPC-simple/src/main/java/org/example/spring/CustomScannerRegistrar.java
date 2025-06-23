@@ -12,8 +12,6 @@ import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.core.type.StandardAnnotationMetadata;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
-
 /**
  *在 Spring 启动时自动扫描指定包路径中的 @RpcService 和 @Component 注解类，并注册为 Bean。
  */
